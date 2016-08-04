@@ -1,15 +1,9 @@
 /**
  * Smart Banner Webpack Plugin
  *
- * This is a clone of [webpack BannerPlugin](https://github.com/webpack/webpack/blob/master/lib/BannerPlugin.js)
- * with the only difference that it supports variable [name] in banner string
- * which will be replaced by the chunk filename
- *
- * Version: 1.0.0
- *
  * Author: johvin
  *
- * Date: 2016/08/03
+ * Date: 2016/08/04
  *
  */
 var ConcatSource = require("webpack-core/lib/ConcatSource");
@@ -35,7 +29,7 @@ BannerPlugin.prototype.apply = function(compiler) {
       chunks.forEach(function(chunk) {
         if(options.entryOnly && !chunk.initial) return;
         chunk.files.filter(ModuleFilenameHelpers.matchObject.bind(undefined, options)).forEach(function(file) {
-          compilation.assets[file] = new ConcatSource(banner.replace(/\[name\]/g, file), "\n", compilation.assets[file]);
+          compilation.assets[file] = new ConcatSource(banner.replace(/\[filename\]/g, file), "\n", compilation.assets[file]);
         });
       });
       callback();

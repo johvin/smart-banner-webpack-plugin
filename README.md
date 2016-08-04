@@ -14,11 +14,23 @@ import SmartBannerPlugin from 'smart-banner-webpack-plugin';
   ...
   plugins: [
     new SmartBannerPlugin(
-      `[filename]\n\nAuthor: johvin\nDate: ${new Date().toLocaleString()}\n`,
+      `[filename] v1.0.0\n\nAuthor: johvin\nDate: ${new Date().toLocaleString()}\n`,
       { raw: false, entryOnly: true })
   ],
   ...
 }
 
+```
+
+_[filename] is replaced by the chunk filename in the process of compilation, e.g. the code below is a processed banner_
+
+```
+/*!
+ * server.js v1.0.0
+ *
+ * Author: johvin
+ * Date: 2016-08-04 09:37:05
+ *
+ */
 ```
 
