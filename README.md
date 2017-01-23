@@ -1,10 +1,10 @@
 # smart-banner-webpack-plugin
 
-[![Version npm][version]](http://browsenpm.org/package/smart-banner-webpack-plugin)[![NPM Download][download]](https://www.npmjs.com/package/smart-banner-webpack-plugin)[![Dependencies][david]](https://david-dm.org/johvin/smart-banner-webpack-plugin)
+[![Version npm][version]](http://browsenpm.org/package/smart-banner-webpack-plugin) [![NPM Download][download]](https://www.npmjs.com/package/smart-banner-webpack-plugin) [![Dependencies][david]](https://david-dm.org/johvin/smart-banner-webpack-plugin)
 
-[version]: http://img.shields.io/npm/v/smart-banner-webpack-plugin.svg?style=flat-square
-[download]: https://img.shields.io/npm/dt/smart-banner-webpack-plugin.svg
-[david]: https://img.shields.io/david/johvin/smart-banner-webpack-plugin.svg?style=flat-square
+[version]: http://img.shields.io/npm/v/smart-banner-webpack-plugin.svg?style=flat
+[download]: https://img.shields.io/npm/dt/smart-banner-webpack-plugin.svg?style=flat
+[david]: https://img.shields.io/david/johvin/smart-banner-webpack-plugin.svg?style=flat
 
 > This is a smart banner webpack plugin which has the same function and usage as webpack.BannerPlugin and supports [filename] syntax in banner string
 
