@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - supports webpack 2
 - changes arguments format which stays same with webpack.BannerPlugin in webpack 2
+- changes dependencies
+- update readme
 
 ## [2.0.0] - 2016-08-04
 ### Changed
