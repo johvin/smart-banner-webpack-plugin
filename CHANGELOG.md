@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0] - 2017-01-23
+### Changed
+- supports webpack 2
+- changes arguments format which stays same with webpack.BannerPlugin in webpack 2
+
 ## [2.0.0] - 2016-08-04
 ### Changed
 - change variable [name] to [filename]

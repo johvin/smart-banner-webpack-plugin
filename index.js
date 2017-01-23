@@ -1,38 +1,58 @@
 /**
- * Smart Banner Webpack Plugin
+ * Smart Banner Webpack Plugin supports webpack 2
  *
  * Author: johvin
- *
- * Date: 2016/08/04
- *
+ * Date: 2017/01/23
  */
-var ConcatSource = require("webpack-core/lib/ConcatSource");
-var ModuleFilenameHelpers = require("webpack/lib/ModuleFilenameHelpers");
+'use strict';
+
+const ConcatSource = require('webpack-sources').ConcatSource;
+const ModuleFilenameHelpers = require('webpack/lib/ModuleFilenameHelpers');
 
 function wrapComment(str) {
-  if(str.indexOf("\n") < 0) return "/*! " + str + " */";
-  return "/*!\n * " + str.split("\n").join("\n * ") + "\n */";
+  if(!str.includes('\n')) return `/*! ${str} */`;
+  return `/*!\n * ${str.split('\n').join('\n * ')}\n */`;
 }
 
-function BannerPlugin(banner, options) {
-  this.options = options || {};
-  this.banner = this.options.raw ? banner : wrapComment(banner);
-}
-module.exports = BannerPlugin;
+class BannerPlugin {
+  constructor(options) {
+    if(arguments.length > 1)
+      throw new Error('BannerPlugin only takes one argument (pass an options object)');
+    if(typeof options === 'string')
+      options = {
+        banner: options
+      };
+    this.options = options || {};
+    this.banner = this.options.raw ? options.banner : wrapComment(options.banner);
+  }
 
-BannerPlugin.prototype.apply = function(compiler) {
-  var options = this.options;
-  var banner = this.banner;
+  apply(compiler) {
+    let options = this.options;
+    let banner = this.banner;
 
-  compiler.plugin("compilation", function(compilation) {
-    compilation.plugin("optimize-chunk-assets", function(chunks, callback) {
-      chunks.forEach(function(chunk) {
-        if(options.entryOnly && !chunk.initial) return;
-        chunk.files.filter(ModuleFilenameHelpers.matchObject.bind(undefined, options)).forEach(function(file) {
-          compilation.assets[file] = new ConcatSource(banner.replace(/\[filename\]/g, file), "\n", compilation.assets[file]);
+    compiler.plugin('compilation', (compilation) => {
+      compilation.plugin('optimize-chunk-assets', (chunks, callback) => {
+        chunks.forEach((chunk) => {
+          if (
+            options.entryOnly
+            && (
+              ('isInitial' in chunk && !chunk.isInitial())
+              || ('initial' in chunk && !chunk.initial)
+            )
+          ) return;
+
+          chunk.files
+            .filter(ModuleFilenameHelpers.matchObject.bind(undefined, options))
+            .forEach((file) =>
+              compilation.assets[file] = new ConcatSource(
+                banner.replace(/\[filename\]/g, file), '\n', compilation.assets[file]
+              )
+            );
         });
+        callback();
       });
-      callback();
     });
-  });
-};
+  }
+}
+
+module.exports = BannerPlugin;

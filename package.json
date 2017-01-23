@@ -1,6 +1,6 @@
 {
   "name": "smart-banner-webpack-plugin",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "This is a smart banner webpack plugin which has the same function and usage as webpack.BannerPlugin and supports [filename] syntax in banner string",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
   "author": "johvin",
   "license": "MIT",
   "dependencies": {
-    "webpack": "~1.13.1",
-    "webpack-core": "~0.6.0"
+    "webpack": "^2.0.0",
+    "webpack-sources": "^0.1.4"
   }
 }
