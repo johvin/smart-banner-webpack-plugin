@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.1] - 2017-02-13
+### Changed
+- fix the error thrown by `chunk.initial` with webpack 2
+
 ## [3.0.0] - 2017-01-23
 ### Changed
 - supports webpack 2

@@ -2,7 +2,7 @@
  * Smart Banner Webpack Plugin supports webpack 2
  *
  * Author: johvin
- * Date: 2017/01/23
+ * Date: 2017/02/13
  */
 'use strict';
 
@@ -35,9 +35,8 @@ class BannerPlugin {
         chunks.forEach((chunk) => {
           if (
             options.entryOnly
-            && (
-              ('isInitial' in chunk && !chunk.isInitial())
-            )
+            && 'isInitial' in chunk
+            && !chunk.isInitial()
           ) return;
 
           chunk.files
