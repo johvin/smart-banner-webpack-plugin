@@ -37,7 +37,6 @@ class BannerPlugin {
             options.entryOnly
             && (
               ('isInitial' in chunk && !chunk.isInitial())
-              || ('initial' in chunk && !chunk.initial)
             )
           ) return;
 
